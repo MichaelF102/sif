@@ -239,25 +239,4 @@ with tab3:
 
         st.plotly_chart(fig_compare, use_container_width=True)
 
-        from sklearn.metrics.pairwise import euclidean_distances
-
-        features = filtered_df[["Equity","Debt","Others","Real Estate"]]
-
-        distances = euclidean_distances(features, features)
-
-        fund_index = filtered_df[filtered_df["Fund"] == fund].index[0]
-
-        similar_idx = distances[fund_index].argsort()[1:4]
-
-        similar_funds = filtered_df.iloc[similar_idx]["Fund"].values
-
-        st.subheader("🔎 Similar Funds")
-        st.write(list(similar_funds))
-
-        fig_pie = px.pie(
-            names=categories,
-            values=[row[c] for c in categories],
-            title="Allocation Breakdown"
-        )
-
-        st.plotly_chart(fig_pie, use_container_width=True)
+       
